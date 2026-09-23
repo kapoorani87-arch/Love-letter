@@ -1,881 +1,766 @@
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Something For You 💌</title>
+<title>A Little Something For Ekampreet ❤️</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-body {
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(135deg, #ffe4ec, #fff4f7, #eadcff);
-  color: #54233b;
-  min-height: 100vh;
-  overflow-x: hidden;
+body{
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#fff0f5,#ffe4ec,#fff);
+  color:#4a2633;
+  overflow-x:hidden;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
+section{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
 }
 
-.container {
-  width: min(92%, 850px);
-  margin: auto;
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-section {
-  min-height: 100vh;
-  padding: 70px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h1{
+  font-size:42px;
+  color:#d6336c;
+  margin-bottom:15px;
 }
 
-.card {
-  background: rgba(255,255,255,.78);
-  backdrop-filter: blur(12px);
-  border-radius: 28px;
-  padding: 35px;
-  box-shadow: 0 15px 50px rgba(120,50,90,.15);
-  text-align: center;
+h2{
+  color:#d6336c;
+  margin-bottom:20px;
 }
 
-/* Floating hearts */
-.heart {
-  position: fixed;
-  pointer-events: none;
-  animation: floatUp 5s linear forwards;
-  z-index: 20;
+.subtitle{
+  font-size:20px;
+  margin-bottom:30px;
 }
 
-@keyframes floatUp {
-  from {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100vh) scale(1.7);
-    opacity: 0;
-  }
+button{
+  border:none;
+  background:#d6336c;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 15px #d6336c55;
+  margin:8px;
+  transition:.2s;
 }
 
-/* INTRO */
-#home h1 {
-  font-size: clamp(35px, 8vw, 70px);
-  color: #d94f7c;
-  margin-bottom: 15px;
+button:hover{
+  transform:scale(1.05);
 }
 
-#home p {
-  font-size: 18px;
-  margin-bottom: 30px;
+.card{
+  background:#ffffffdd;
+  padding:28px;
+  border-radius:25px;
+  margin-top:20px;
+  box-shadow:0 10px 30px #9d526d22;
+  line-height:1.8;
 }
 
-.primary {
-  background: linear-gradient(135deg, #ff5f8f, #c94fdf);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 16px;
-  box-shadow: 0 8px 20px rgba(210,70,130,.25);
-  transition: .2s;
+.letter{
+  font-size:17px;
 }
 
-.primary:hover {
-  transform: translateY(-3px);
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-/* Envelope */
-.envelope {
-  width: 230px;
-  height: 150px;
-  margin: 30px auto;
-  background: #ff8faf;
-  position: relative;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 15px 30px rgba(0,0,0,.12);
+.memory{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 5px 15px #00000012;
 }
 
-.envelope:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #ffb2c7;
-  clip-path: polygon(0 0, 50% 55%, 100% 0);
+.music-box,
+.game-box,
+.quiz-box{
+  text-align:center;
+  background:#ffffffdd;
+  padding:30px;
+  border-radius:25px;
+  box-shadow:0 10px 30px #00000012;
 }
 
-.envelope span {
-  position: absolute;
-  width: 100%;
-  top: 62px;
-  font-size: 35px;
+#gameArea{
+  height:300px;
+  position:relative;
+  overflow:hidden;
+  background:#fff5f8;
+  border-radius:20px;
+  margin:20px 0;
 }
 
-.hidden {
-  display: none !important;
+.heart{
+  position:absolute;
+  font-size:32px;
+  cursor:pointer;
+  user-select:none;
+  animation:float 2s infinite alternate;
 }
 
-/* Letter */
-.letter {
-  text-align: left;
-  background: #fffaf0;
-  padding: 35px;
-  border-radius: 8px;
-  border: 1px solid #efd8bd;
-  box-shadow: 0 10px 30px rgba(80,40,20,.12);
-  line-height: 1.8;
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-12px)}
 }
 
-.letter h2 {
-  text-align: center;
-  color: #c64f76;
-  margin-bottom: 20px;
+.quiz-question{
+  font-size:21px;
+  font-weight:bold;
+  margin:20px 0;
 }
 
-.signature {
-  margin-top: 25px;
-  text-align: right;
-  font-weight: bold;
+.quiz-options{
+  display:grid;
+  gap:12px;
 }
 
-/* Quiz */
-.question {
-  font-size: 22px;
-  margin: 20px 0;
+.quiz-options button{
+  width:100%;
+  background:#fff;
+  color:#d6336c;
+  border:2px solid #ffd0dd;
+  box-shadow:none;
+  margin:0;
 }
 
-.options {
-  display: grid;
-  gap: 12px;
-  margin-top: 20px;
+.quiz-options button:hover{
+  background:#ffe6ee;
 }
 
-.option {
-  padding: 13px;
-  background: #fff;
-  border: 2px solid #ffd0df;
-  border-radius: 15px;
-  transition: .2s;
+#quizResult{
+  margin-top:20px;
+  font-size:22px;
+  font-weight:bold;
+  color:#d6336c;
 }
 
-.option:hover {
-  background: #ffe8f0;
-  transform: scale(1.02);
+#surprise{
+  display:none;
+  font-size:28px;
+  text-align:center;
+  margin-top:20px;
 }
 
-.result {
-  margin-top: 20px;
-  font-weight: bold;
-  min-height: 25px;
+footer{
+  text-align:center;
+  padding:30px;
+  color:#a64d6a;
 }
 
-/* Heart game */
-.game-area {
-  position: relative;
-  height: 330px;
-  margin-top: 20px;
-  background: linear-gradient(#fff0f5, #f8eaff);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 2px dashed #ff9fbe;
-}
-
-.game-heart {
-  position: absolute;
-  font-size: 35px;
-  cursor: pointer;
-  user-select: none;
-  animation: pulse .8s infinite alternate;
-}
-
-@keyframes pulse {
-  to { transform: scale(1.2); }
-}
-
-.score {
-  font-size: 20px;
-  margin: 10px;
-  font-weight: bold;
-}
-
-/* Mystery boxes */
-.boxes {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(135deg,#ff719d,#c85bea);
-  color: white;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  transition: .25s;
-}
-
-.box:hover {
-  transform: translateY(-8px) rotate(2deg);
-}
-
-.message {
-  margin-top: 25px;
-  font-size: 18px;
-  min-height: 30px;
-  color: #bd4670;
-}
-
-/* Memories */
-.memories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.memory {
-  height: 170px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(135deg,#ffd3e0,#ead5ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
-}
-
-/* Final */
-.final h2 {
-  font-size: 40px;
-  color: #d84d7b;
-}
-
-.final p {
-  font-size: 19px;
-  line-height: 1.7;
-  margin: 20px 0;
-}
-
-#finalHeart {
-  font-size: 70px;
-  animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-  50% { transform: scale(1.2); }
-}
-
-.small {
-  font-size: 13px;
-  opacity: .7;
-  margin-top: 20px;
+@media(max-width:600px){
+  h1{font-size:32px}
+  .memory-grid{grid-template-columns:1fr}
+  section{padding:45px 15px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<section id="home">
-  <div class="container">
-    <div class="card">
-      <div style="font-size:60px;">💌</div>
+<!-- HERO -->
+<section class="hero">
 
-      <h1>A Little Something For You</h1>
+<h1>A Little Something For Ekampreet 🧿🫂🫀</h1>
 
-      <p>
-        I made this tiny website just to make you smile.
-        <br>
-        Ready? 👀❤️
-      </p>
+<p class="subtitle">
+From Anirudh ❤️
+</p>
 
-      <button class="primary" onclick="openLetter()">
-        Open My Letter 💗
-      </button>
-    </div>
-  </div>
+<button onclick="openLetter()">
+Open My Letter 💗
+</button>
+
 </section>
 
 
 <!-- LETTER -->
-<section id="letterSection" class="hidden">
-  <div class="container">
-    <div class="card">
+<section id="letterSection">
 
-      <div class="envelope" onclick="revealLetter()">
-        <span>💌</span>
-      </div>
+<h2>💌 My Letter For You</h2>
 
-      <div id="letter" class="letter hidden">
+<div class="card letter">
 
-        <h2>For You ❤️</h2>
+<p><b>Meri Ekampreet 🧿🫂🫀</b></p>
 
-        <p>
-          Hey you! 🌸
-        </p>
+<br>
 
-        <p>
-          I don't always know the perfect words to say,
-          so I thought I'd make something a little different
-          instead.
-        </p>
+<p>
+Aapke saath bitaya hua har ek second mere liye bahut khaas hai.
+Aap meri life ka woh beautiful part ho jise main kabhi khona nahi chahta.
+</p>
 
-        <p>
-          This little website is basically a collection of
-          random things, tiny games and messages — all made
-          just for you.
-        </p>
+<br>
 
-        <p>
-          I hope every click makes you smile even a little. 🥹
-        </p>
+<p>
+Aap bahut zyada sundar ho. Aap bilkul swarg se utri hui apsara,
+ek hoor pari ho. 🥹❤️
+</p>
 
-        <p>
-          And yes... there is a whole lot more waiting below.
-          So keep going. 👀
-        </p>
+<br>
 
-        <div class="signature">
-          — Your Person ❤️
-        </div>
+<p>
+Main bahut zyada lucky hoon ki aap meri life mein ho.
+Aapke saath baat karna, hasna aur chhoti-chhoti baatein share karna
+mere liye bahut special hai.
+</p>
 
-      </div>
+<br>
 
-      <br>
+<p>
+Aur haan, agar maine kabhi aapko hurt kiya ho ya gusse mein
+aapse loud voice mein baat ki ho toh I'm really sorry. ❤️
+Mera intention kabhi bhi aapko hurt karna nahi hota.
+</p>
 
-      <button class="primary" onclick="goTo('quiz')">
-        Continue 💕
-      </button>
+<br>
 
-    </div>
-  </div>
-</section>
+<p>
+Main aapko gussa bhi dilata hoon
+(aur shayad dilata rahunga 😂),
+lekin sach bataun toh aap gusse mein bhi bahut cute lagti ho. 😭❤️
+</p>
 
+<br>
 
-<!-- QUIZ -->
-<section id="quiz" class="hidden">
-  <div class="container">
-    <div class="card">
+<p>
+Aap hamesha khush raha karo.
+Aapki khushi mein meri khushi hai. 🫂
+</p>
 
-      <h2>🎀 How Well Do You Know Me?</h2>
+<br>
 
-      <p class="small">
-        Don't worry... wrong answers won't be held against you 😂
-      </p>
+<p>
+Maine aaj tak itni zyada sundar ladki nahi dekhi.
+Aapki smile hi alag level ki hai. ❤️
+</p>
 
-      <div class="question" id="question">
-        Question loading...
-      </div>
+<br>
 
-      <div class="options" id="options"></div>
+<p>
+Bas meri ek wish hai ki hum hamesha aise hi saath rahein,
+saath mein hasein, ek doosre ko support karein aur
+bahut saari beautiful memories banayein.
+</p>
 
-      <div class="result" id="quizResult"></div>
+<!-- NEW PROMISE -->
+<br>
 
-    </div>
-  </div>
-</section>
+<p>
+Aur ek vaada aapse karta hoon —
+main apni life mein successful person banne ke liye
+poori mehnat karunga. Main chahta hoon ki ek din main
+itna capable banu ki aapke saath shaadi karne ka apna
+sapna poora kar sakun. ❤️
+Main aapko hamesha khush rakhne aur aapka saath dene
+ki poori koshish karunga. 🫂🧿
+</p>
 
+<br>
 
-<!-- HEART GAME -->
-<section id="heartGame" class="hidden">
-  <div class="container">
-    <div class="card">
+<p>
+Aur haan... future mein do chhote-chhote bacche bhi ho 😂❤️
+Bas kisi ki nazar na lage. 🧿
+</p>
 
-      <h2>💗 Catch The Hearts</h2>
+<br>
 
-      <p>
-        Catch as many hearts as you can!
-      </p>
+<p style="text-align:right">
+<b>Always yours,<br>Anirudh ❤️</b>
+</p>
 
-      <div class="score">
-        Score: <span id="score">0</span>
-      </div>
+</div>
 
-      <div class="game-area" id="gameArea"></div>
-
-      <br>
-
-      <button class="primary" onclick="startGame()">
-        Start / Restart Game 🎮
-      </button>
-
-      <br><br>
-
-      <button class="primary" onclick="goTo('boxes')">
-        I'm Done ❤️
-      </button>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- MYSTERY BOXES -->
-<section id="boxes" class="hidden">
-  <div class="container">
-    <div class="card">
-
-      <h2>🎁 Pick A Mystery Box</h2>
-
-      <p>
-        Each box has a little message for you.
-      </p>
-
-      <div class="boxes">
-
-        <button class="box" onclick="openBox(0)">
-          🎁
-        </button>
-
-        <button class="box" onclick="openBox(1)">
-          🎁
-        </button>
-
-        <button class="box" onclick="openBox(2)">
-          🎁
-        </button>
-
-        <button class="box" onclick="openBox(3)">
-          🎁
-        </button>
-
-      </div>
-
-      <div class="message" id="boxMessage"></div>
-
-      <br>
-
-      <button class="primary" onclick="goTo('memories')">
-        Next 🌸
-      </button>
-
-    </div>
-  </div>
 </section>
 
 
 <!-- MEMORIES -->
-<section id="memories" class="hidden">
-  <div class="container">
-    <div class="card">
+<section id="memories">
 
-      <h2>🌷 Little Memory Corner</h2>
+<h2>📸 Our Little Memories</h2>
 
-      <p>
-        Replace these cards with your own photos later.
-      </p>
+<div class="memory-grid">
 
-      <div class="memories">
+<div class="memory">
+<h3>📱 Video Calls</h3>
+<p>Those random calls that became special memories ❤️</p>
+</div>
 
-        <div class="memory">📸</div>
-        <div class="memory">🌸</div>
-        <div class="memory">🥰</div>
-        <div class="memory">✨</div>
+<div class="memory">
+<h3>🥹 Cute Moments</h3>
+<p>Small moments that mean a lot.</p>
+</div>
 
-      </div>
+<div class="memory">
+<h3>🧿 Nazar Na Lage</h3>
+<p>Bas humari happiness ko kisi ki nazar na lage.</p>
+</div>
 
-      <br>
+<div class="memory">
+<h3>🫂 Always Together</h3>
+<p>More memories, more laughs, more moments.</p>
+</div>
 
-      <button class="primary" onclick="goTo('final')">
-        One Last Thing 💌
-      </button>
+</div>
 
-    </div>
-  </div>
+</section>
+
+
+<!-- MUSIC -->
+<section id="music">
+
+<h2>🎵 A Soft Tune For You</h2>
+
+<div class="music-box">
+
+<p>
+A tiny soft tune made specially for this page. ❤️
+</p>
+
+<button onclick="toggleMusic()" id="musicButton">
+▶️ Play Soft Tune
+</button>
+
+<p id="musicStatus"></p>
+
+</div>
+
+</section>
+
+
+<!-- HEART GAME -->
+<section id="game">
+
+<h2>💗 Catch The Hearts</h2>
+
+<div class="game-box">
+
+<p>Tap as many hearts as you can in 20 seconds!</p>
+
+<p style="margin-top:10px">
+Score: <b id="score">0</b>
+</p>
+
+<button onclick="startGame()">
+Start Game 💕
+</button>
+
+<div id="gameArea"></div>
+
+<p id="gameMessage"></p>
+
+</div>
+
+</section>
+
+
+<!-- LOVE QUIZ -->
+<section id="loveQuiz">
+
+<h2>💞 Love Quiz</h2>
+
+<div class="quiz-box">
+
+<p>
+Let's see how well you know Anirudh! 😄❤️
+</p>
+
+<div id="quizContainer"></div>
+
+<div id="quizResult"></div>
+
+</div>
+
 </section>
 
 
 <!-- FINAL -->
-<section id="final" class="hidden">
-  <div class="container">
-    <div class="card final">
+<section id="final">
 
-      <div id="finalHeart">❤️</div>
+<h2>🫂 One Last Thing</h2>
 
-      <h2>You Made It!</h2>
+<div class="card" style="text-align:center">
 
-      <p>
-        If you reached this far...
-        <br>
-        I hope you know how special you are to me.
-      </p>
+<p>
+If you reached till here...
+you deserve one giant virtual hug. 🫂❤️
+</p>
 
-      <p>
-        No game, website or amount of words could ever
-        properly explain it.
-      </p>
+<button onclick="showSurprise()">
+Click For A Surprise 🎁
+</button>
 
-      <p>
-        So here's the simplest version:
-        <br><br>
-        <strong>I'm really glad you're in my life. ❤️</strong>
-      </p>
+<div id="surprise">
+🫂🫂🫂<br>
+Lots of hugs for you! ❤️<br>
+🧿 Stay Happy Always 🧿
+</div>
 
-      <button class="primary" onclick="celebrate()">
-        Click For A Surprise ✨
-      </button>
+</div>
 
-      <p id="surprise" class="message"></p>
-
-    </div>
-  </div>
 </section>
+
+
+<footer>
+Made with ❤️ by Anirudh for Ekampreet 🧿
+</footer>
 
 
 <script>
 
-/* -----------------------------
-   CHANGE THESE DETAILS
------------------------------- */
+/* LETTER */
 
-const quizQuestions = [
-  {
-    question: "What would I probably choose for a free day?",
-    options: [
-      "Sleep 😴",
-      "Go somewhere fun 🌎",
-      "Eat everything 🍕",
-      "All of the above 😂"
-    ],
-    answer: 3
-  },
+function openLetter(){
 
-  {
-    question: "What makes a normal day better?",
-    options: [
-      "Good food 🍕",
-      "Music 🎧",
-      "A good conversation 💬",
-      "All of these ❤️"
-    ],
-    answer: 3
-  },
+document.getElementById("letterSection")
+.scrollIntoView({
+behavior:"smooth"
+});
 
-  {
-    question: "What's the most important thing here?",
-    options: [
-      "Winning the game 🏆",
-      "Getting the answers right 🤓",
-      "Making you smile 😊",
-      "Nothing 😂"
-    ],
-    answer: 2
-  }
+}
+
+
+/* MUSIC */
+
+let audioContext;
+let oscillator;
+let gainNode;
+let playing=false;
+
+const notes=[
+261.63,
+329.63,
+392.00,
+329.63,
+293.66,
+349.23,
+440.00,
+349.23
 ];
 
+function toggleMusic(){
 
-/* -----------------------------
-   NAVIGATION
------------------------------- */
+if(playing){
+stopMusic();
+return;
+}
 
-function goTo(id) {
+audioContext=new(window.AudioContext||window.webkitAudioContext)();
 
-  const sections = document.querySelectorAll("section");
+gainNode=audioContext.createGain();
+gainNode.gain.value=0.07;
+gainNode.connect(audioContext.destination);
 
-  sections.forEach(section => {
-    section.classList.add("hidden");
-  });
+oscillator=audioContext.createOscillator();
 
-  document.getElementById(id).classList.remove("hidden");
+oscillator.type="sine";
+oscillator.frequency.value=notes[0];
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+oscillator.connect(gainNode);
+oscillator.start();
+
+let i=0;
+
+oscillator.interval=setInterval(()=>{
+
+i=(i+1)%notes.length;
+
+oscillator.frequency.setValueAtTime(
+notes[i],
+audioContext.currentTime
+);
+
+},500);
+
+playing=true;
+
+document.getElementById("musicButton").innerText="⏹️ Stop Tune";
+document.getElementById("musicStatus").innerText="Playing softly... 🎵";
+
+}
+
+function stopMusic(){
+
+if(oscillator){
+
+clearInterval(oscillator.interval);
+oscillator.stop();
+
+}
+
+if(audioContext){
+audioContext.close();
+}
+
+playing=false;
+
+document.getElementById("musicButton").innerText="▶️ Play Soft Tune";
+document.getElementById("musicStatus").innerText="";
 
 }
 
 
-/* -----------------------------
-   LETTER
------------------------------- */
+/* HEART GAME */
 
-function openLetter() {
-  goTo("letterSection");
-}
-
-function revealLetter() {
-
-  document.getElementById("letter")
-    .classList.remove("hidden");
-
-  createHearts(12);
-}
-
-
-/* -----------------------------
-   QUIZ
------------------------------- */
-
-let currentQuestion = 0;
-let quizScore = 0;
-
-function loadQuestion() {
-
-  const q = quizQuestions[currentQuestion];
-
-  document.getElementById("question").textContent =
-    q.question;
-
-  const options = document.getElementById("options");
-
-  options.innerHTML = "";
-
-  q.options.forEach((option,index) => {
-
-    const button = document.createElement("button");
-
-    button.className = "option";
-
-    button.textContent = option;
-
-    button.onclick = () => answerQuiz(index);
-
-    options.appendChild(button);
-
-  });
-
-}
-
-function answerQuiz(index) {
-
-  const q = quizQuestions[currentQuestion];
-
-  if(index === q.answer) {
-
-    quizScore++;
-
-    document.getElementById("quizResult")
-      .textContent = "Correct! 😭❤️";
-
-  } else {
-
-    document.getElementById("quizResult")
-      .textContent = "Nice try 😂❤️";
-
-  }
-
-  currentQuestion++;
-
-  if(currentQuestion < quizQuestions.length) {
-
-    setTimeout(() => {
-
-      document.getElementById("quizResult")
-        .textContent = "";
-
-      loadQuestion();
-
-    },900);
-
-  } else {
-
-    setTimeout(() => {
-
-      document.getElementById("question").textContent =
-        `You scored ${quizScore}/${quizQuestions.length} ❤️`;
-
-      document.getElementById("options").innerHTML = `
-        <button class="primary" onclick="goTo('heartGame')">
-          Next Game 🎮
-        </button>
-      `;
-
-      document.getElementById("quizResult").textContent =
-        "Okay... officially impressed 😌";
-
-    },900);
-
-  }
-
-}
-
-loadQuestion();
-
-
-/* -----------------------------
-   HEART GAME
------------------------------- */
-
-let score = 0;
+let score=0;
+let gameRunning=false;
 let gameTimer;
 
-function startGame() {
+function startGame(){
 
-  clearInterval(gameTimer);
+if(gameRunning)return;
 
-  score = 0;
+score=0;
+gameRunning=true;
 
-  document.getElementById("score").textContent = score;
+document.getElementById("score").innerText=score;
+document.getElementById("gameMessage").innerText="Go! 💗";
 
-  const area = document.getElementById("gameArea");
+let time=20;
 
-  area.innerHTML = "";
+gameTimer=setInterval(()=>{
 
-  gameTimer = setInterval(() => {
+time--;
 
-    createGameHeart();
+if(time<=0){
 
-  },700);
+clearInterval(gameTimer);
+gameRunning=false;
 
-  setTimeout(() => {
-
-    clearInterval(gameTimer);
-
-  },15000);
-
-}
-
-function createGameHeart() {
-
-  const area = document.getElementById("gameArea");
-
-  const heart = document.createElement("div");
-
-  heart.className = "game-heart";
-
-  heart.textContent = "❤️";
-
-  const x =
-    Math.random() * (area.clientWidth - 45);
-
-  const y =
-    Math.random() * (area.clientHeight - 45);
-
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
-
-  heart.onclick = () => {
-
-    score++;
-
-    document.getElementById("score")
-      .textContent = score;
-
-    heart.remove();
-
-    createHearts(2);
-
-  };
-
-  area.appendChild(heart);
-
-  setTimeout(() => {
-
-    if(heart.parentNode) {
-      heart.remove();
-    }
-
-  },1200);
+document.getElementById("gameMessage").innerText=
+"Time's up! You caught "+score+" hearts! ❤️";
 
 }
 
+},1000);
 
-/* -----------------------------
-   MYSTERY BOXES
------------------------------- */
+spawnHeart();
 
-const boxMessages = [
+}
 
-  "You deserve all the happiness in the world. 🌸",
+function spawnHeart(){
 
-  "Plot twist: You're the best prize here. 🏆❤️",
+if(!gameRunning)return;
 
-  "This box contains one virtual hug. 🤗",
+const area=document.getElementById("gameArea");
 
-  "Okay... now smile. That's an order. 😭❤️"
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerText="❤️";
+
+heart.style.left=
+Math.random()*(area.clientWidth-40)+"px";
+
+heart.style.top=
+Math.random()*(area.clientHeight-40)+"px";
+
+heart.onclick=function(){
+
+score++;
+
+document.getElementById("score").innerText=score;
+
+heart.remove();
+
+spawnHeart();
+
+};
+
+area.appendChild(heart);
+
+setTimeout(()=>{
+
+if(heart.parentNode){
+
+heart.remove();
+spawnHeart();
+
+}
+
+},1200);
+
+}
+
+
+/* LOVE QUIZ */
+
+const quizQuestions=[
+
+{
+question:"What is Anirudh's name? 😄",
+options:[
+"Anirudh",
+"Rahul",
+"Arjun",
+"Aditya"
+],
+answer:"Anirudh"
+},
+
+{
+question:"Who is this website specially made for? ❤️",
+options:[
+"Ekampreet",
+"Ananya",
+"Priya",
+"Simran"
+],
+answer:"Ekampreet"
+},
+
+{
+question:"What emoji does Anirudh use with Ekampreet? 🧿",
+options:[
+"🧿",
+"🔥",
+"⭐",
+"🎸"
+],
+answer:"🧿"
+},
+
+{
+question:"What does Anirudh want to make together? 🥹",
+options:[
+"Beautiful memories",
+"Arguments",
+"Homework",
+"Nothing"
+],
+answer:"Beautiful memories"
+},
+
+{
+question:"What does Anirudh wish for Ekampreet? ❤️",
+options:[
+"Always stay happy",
+"Always stay angry",
+"Never smile",
+"Never talk"
+],
+answer:"Always stay happy"
+}
 
 ];
 
-function openBox(index) {
+let currentQuestion=0;
+let quizScore=0;
 
-  document.getElementById("boxMessage")
-    .textContent = boxMessages[index];
+function loadQuiz(){
 
-  createHearts(8);
+const q=quizQuestions[currentQuestion];
+
+let html="";
+
+html+=`
+<div class="quiz-question">
+${q.question}
+</div>
+
+<div class="quiz-options">
+`;
+
+q.options.forEach(option=>{
+
+html+=`
+<button onclick="answerQuiz('${option.replace(/'/g,"\\'")}')">
+${option}
+</button>
+`;
+
+});
+
+html+="</div>";
+
+document.getElementById("quizContainer").innerHTML=html;
+
+}
+
+function answerQuiz(selected){
+
+const q=quizQuestions[currentQuestion];
+
+if(selected===q.answer){
+quizScore++;
+}
+
+currentQuestion++;
+
+if(currentQuestion<quizQuestions.length){
+
+loadQuiz();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.getElementById("quizContainer").innerHTML="";
+
+let message="";
+
+if(quizScore===5){
+
+message="🥹❤️ PERFECT! You know Anirudh sooo well! 🫂";
+
+}else if(quizScore>=3){
+
+message="❤️ Very good! You know him pretty well! 😄";
+
+}else{
+
+message="😂❤️ Looks like you need to know Anirudh a little more!";
+
+}
+
+document.getElementById("quizResult").innerHTML=
+"You scored <b>"+quizScore+"/5</b><br><br>"+message;
 
 }
 
 
-/* -----------------------------
-   FLOATING HEARTS
------------------------------- */
+/* START QUIZ */
 
-function createHearts(amount) {
+loadQuiz();
 
-  for(let i = 0; i < amount; i++) {
 
-    const heart = document.createElement("div");
+/* SURPRISE */
 
-    heart.className = "heart";
+function showSurprise(){
 
-    heart.textContent =
-      ["❤️","💗","💕","💖","💘"]
-      [Math.floor(Math.random()*5)];
-
-    heart.style.left =
-      Math.random()*100 + "vw";
-
-    heart.style.bottom = "-30px";
-
-    heart.style.fontSize =
-      (15 + Math.random()*25) + "px";
-
-    heart.style.animationDuration =
-      (3 + Math.random()*3) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    },6000);
-
-  }
+document.getElementById("surprise").style.display="block";
 
 }
-
-
-/* -----------------------------
-   FINAL SURPRISE
------------------------------- */
-
-function celebrate() {
-
-  createHearts(50);
-
-  document.getElementById("surprise")
-    .textContent =
-    "SURPRISE! 🎉 You just unlocked unlimited virtual hugs. 🤗❤️";
-
-}
-
-
-/* Random hearts in background */
-
-setInterval(() => {
-
-  if(Math.random() > .55) {
-    createHearts(1);
-  }
-
-},1500);
 
 </script>
 
 </body>
-  </html>
+</html>
