@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something For You 💌</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe4ec, #fff4f7, #eadcff);
+  color: #54233b;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.container {
+  width: min(92%, 850px);
+  margin: auto;
+}
+
+section {
+  min-height: 100vh;
+  padding: 70px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 35px;
+  box-shadow: 0 15px 50px rgba(120,50,90,.15);
+  text-align: center;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  pointer-events: none;
+  animation: floatUp 5s linear forwards;
+  z-index: 20;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh) scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* INTRO */
+#home h1 {
+  font-size: clamp(35px, 8vw, 70px);
+  color: #d94f7c;
+  margin-bottom: 15px;
+}
+
+#home p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.primary {
+  background: linear-gradient(135deg, #ff5f8f, #c94fdf);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  box-shadow: 0 8px 20px rgba(210,70,130,.25);
+  transition: .2s;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+}
+
+/* Envelope */
+.envelope {
+  width: 230px;
+  height: 150px;
+  margin: 30px auto;
+  background: #ff8faf;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0,0,0,.12);
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffb2c7;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+}
+
+.envelope span {
+  position: absolute;
+  width: 100%;
+  top: 62px;
+  font-size: 35px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Letter */
+.letter {
+  text-align: left;
+  background: #fffaf0;
+  padding: 35px;
+  border-radius: 8px;
+  border: 1px solid #efd8bd;
+  box-shadow: 0 10px 30px rgba(80,40,20,.12);
+  line-height: 1.8;
+}
+
+.letter h2 {
+  text-align: center;
+  color: #c64f76;
+  margin-bottom: 20px;
+}
+
+.signature {
+  margin-top: 25px;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Quiz */
+.question {
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.option {
+  padding: 13px;
+  background: #fff;
+  border: 2px solid #ffd0df;
+  border-radius: 15px;
+  transition: .2s;
+}
+
+.option:hover {
+  background: #ffe8f0;
+  transform: scale(1.02);
+}
+
+.result {
+  margin-top: 20px;
+  font-weight: bold;
+  min-height: 25px;
+}
+
+/* Heart game */
+.game-area {
+  position: relative;
+  height: 330px;
+  margin-top: 20px;
+  background: linear-gradient(#fff0f5, #f8eaff);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px dashed #ff9fbe;
+}
+
+.game-heart {
+  position: absolute;
+  font-size: 35px;
+  cursor: pointer;
+  user-select: none;
+  animation: pulse .8s infinite alternate;
+}
+
+@keyframes pulse {
+  to { transform: scale(1.2); }
+}
+
+.score {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+/* Mystery boxes */
+.boxes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg,#ff719d,#c85bea);
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  transition: .25s;
+}
+
+.box:hover {
+  transform: translateY(-8px) rotate(2deg);
+}
+
+.message {
+  margin-top: 25px;
+  font-size: 18px;
+  min-height: 30px;
+  color: #bd4670;
+}
+
+/* Memories */
+.memories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.memory {
+  height: 170px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(135deg,#ffd3e0,#ead5ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+}
+
+/* Final */
+.final h2 {
+  font-size: 40px;
+  color: #d84d7b;
+}
+
+.final p {
+  font-size: 19px;
+  line-height: 1.7;
+  margin: 20px 0;
+}
+
+#finalHeart {
+  font-size: 70px;
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+.small {
+  font-size: 13px;
+  opacity: .7;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section id="home">
+  <div class="container">
+    <div class="card">
+      <div style="font-size:60px;">💌</div>
+
+      <h1>A Little Something For You</h1>
+
+      <p>
+        I made this tiny website just to make you smile.
+        <br>
+        Ready? 👀❤️
+      </p>
+
+      <button class="primary" onclick="openLetter()">
+        Open My Letter 💗
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- LETTER -->
+<section id="letterSection" class="hidden">
+  <div class="container">
+    <div class="card">
+
+      <div class="envelope" onclick="revealLetter()">
+        <span>💌</span>
+      </div>
+
+      <div id="letter" class="letter hidden">
+
+        <h2>For You ❤️</h2>
+
+        <p>
+          Hey you! 🌸
+        </p>
+
+        <p>
+          I don't always know the perfect words to say,
+          so I thought I'd make something a little different
+          instead.
+        </p>
+
+        <p>
+          This little website is basically a collection of
+          random things, tiny games and messages — all made
+          just for you.
+        </p>
+
+        <p>
+          I hope every click makes you smile even a little. 🥹
+        </p>
+
+        <p>
+          And yes... there is a whole lot more waiting below.
+          So keep going. 👀
+        </p>
+
+        <div class="signature">
+          — Your Person ❤️
+        </div>
+
+      </div>
+
+      <br>
+
+      <button class="primary" onclick="goTo('quiz')">
+        Continue 💕
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz" class="hidden">
+  <div class="container">
+    <div class="card">
+
+      <h2>🎀 How Well Do You Know Me?</h2>
+
+      <p class="small">
+        Don't worry... wrong answers won't be held against you 😂
+      </p>
+
+      <div class="question" id="question">
+        Question loading...
+      </div>
+
+      <div class="options" id="options"></div>
+
+      <div class="result" id="quizResult"></div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- HEART GAME -->
+<section id="heartGame" class="hidden">
+  <div class="container">
+    <div class="card">
+
+      <h2>💗 Catch The Hearts</h2>
+
+      <p>
+        Catch as many hearts as you can!
+      </p>
+
+      <div class="score">
+        Score: <span id="score">0</span>
+      </div>
+
+      <div class="game-area" id="gameArea"></div>
+
+      <br>
+
+      <button class="primary" onclick="startGame()">
+        Start / Restart Game 🎮
+      </button>
+
+      <br><br>
+
+      <button class="primary" onclick="goTo('boxes')">
+        I'm Done ❤️
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MYSTERY BOXES -->
+<section id="boxes" class="hidden">
+  <div class="container">
+    <div class="card">
+
+      <h2>🎁 Pick A Mystery Box</h2>
+
+      <p>
+        Each box has a little message for you.
+      </p>
+
+      <div class="boxes">
+
+        <button class="box" onclick="openBox(0)">
+          🎁
+        </button>
+
+        <button class="box" onclick="openBox(1)">
+          🎁
+        </button>
+
+        <button class="box" onclick="openBox(2)">
+          🎁
+        </button>
+
+        <button class="box" onclick="openBox(3)">
+          🎁
+        </button>
+
+      </div>
+
+      <div class="message" id="boxMessage"></div>
+
+      <br>
+
+      <button class="primary" onclick="goTo('memories')">
+        Next 🌸
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MEMORIES -->
+<section id="memories" class="hidden">
+  <div class="container">
+    <div class="card">
+
+      <h2>🌷 Little Memory Corner</h2>
+
+      <p>
+        Replace these cards with your own photos later.
+      </p>
+
+      <div class="memories">
+
+        <div class="memory">📸</div>
+        <div class="memory">🌸</div>
+        <div class="memory">🥰</div>
+        <div class="memory">✨</div>
+
+      </div>
+
+      <br>
+
+      <button class="primary" onclick="goTo('final')">
+        One Last Thing 💌
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL -->
+<section id="final" class="hidden">
+  <div class="container">
+    <div class="card final">
+
+      <div id="finalHeart">❤️</div>
+
+      <h2>You Made It!</h2>
+
+      <p>
+        If you reached this far...
+        <br>
+        I hope you know how special you are to me.
+      </p>
+
+      <p>
+        No game, website or amount of words could ever
+        properly explain it.
+      </p>
+
+      <p>
+        So here's the simplest version:
+        <br><br>
+        <strong>I'm really glad you're in my life. ❤️</strong>
+      </p>
+
+      <button class="primary" onclick="celebrate()">
+        Click For A Surprise ✨
+      </button>
+
+      <p id="surprise" class="message"></p>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+
+/* -----------------------------
+   CHANGE THESE DETAILS
+------------------------------ */
+
+const quizQuestions = [
+  {
+    question: "What would I probably choose for a free day?",
+    options: [
+      "Sleep 😴",
+      "Go somewhere fun 🌎",
+      "Eat everything 🍕",
+      "All of the above 😂"
+    ],
+    answer: 3
+  },
+
+  {
+    question: "What makes a normal day better?",
+    options: [
+      "Good food 🍕",
+      "Music 🎧",
+      "A good conversation 💬",
+      "All of these ❤️"
+    ],
+    answer: 3
+  },
+
+  {
+    question: "What's the most important thing here?",
+    options: [
+      "Winning the game 🏆",
+      "Getting the answers right 🤓",
+      "Making you smile 😊",
+      "Nothing 😂"
+    ],
+    answer: 2
+  }
+];
+
+
+/* -----------------------------
+   NAVIGATION
+------------------------------ */
+
+function goTo(id) {
+
+  const sections = document.querySelectorAll("section");
+
+  sections.forEach(section => {
+    section.classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* -----------------------------
+   LETTER
+------------------------------ */
+
+function openLetter() {
+  goTo("letterSection");
+}
+
+function revealLetter() {
+
+  document.getElementById("letter")
+    .classList.remove("hidden");
+
+  createHearts(12);
+}
+
+
+/* -----------------------------
+   QUIZ
+------------------------------ */
+
+let currentQuestion = 0;
+let quizScore = 0;
+
+function loadQuestion() {
+
+  const q = quizQuestions[currentQuestion];
+
+  document.getElementById("question").textContent =
+    q.question;
+
+  const options = document.getElementById("options");
+
+  options.innerHTML = "";
+
+  q.options.forEach((option,index) => {
+
+    const button = document.createElement("button");
+
+    button.className = "option";
+
+    button.textContent = option;
+
+    button.onclick = () => answerQuiz(index);
+
+    options.appendChild(button);
+
+  });
+
+}
+
+function answerQuiz(index) {
+
+  const q = quizQuestions[currentQuestion];
+
+  if(index === q.answer) {
+
+    quizScore++;
+
+    document.getElementById("quizResult")
+      .textContent = "Correct! 😭❤️";
+
+  } else {
+
+    document.getElementById("quizResult")
+      .textContent = "Nice try 😂❤️";
+
+  }
+
+  currentQuestion++;
+
+  if(currentQuestion < quizQuestions.length) {
+
+    setTimeout(() => {
+
+      document.getElementById("quizResult")
+        .textContent = "";
+
+      loadQuestion();
+
+    },900);
+
+  } else {
+
+    setTimeout(() => {
+
+      document.getElementById("question").textContent =
+        `You scored ${quizScore}/${quizQuestions.length} ❤️`;
+
+      document.getElementById("options").innerHTML = `
+        <button class="primary" onclick="goTo('heartGame')">
+          Next Game 🎮
+        </button>
+      `;
+
+      document.getElementById("quizResult").textContent =
+        "Okay... officially impressed 😌";
+
+    },900);
+
+  }
+
+}
+
+loadQuestion();
+
+
+/* -----------------------------
+   HEART GAME
+------------------------------ */
+
+let score = 0;
+let gameTimer;
+
+function startGame() {
+
+  clearInterval(gameTimer);
+
+  score = 0;
+
+  document.getElementById("score").textContent = score;
+
+  const area = document.getElementById("gameArea");
+
+  area.innerHTML = "";
+
+  gameTimer = setInterval(() => {
+
+    createGameHeart();
+
+  },700);
+
+  setTimeout(() => {
+
+    clearInterval(gameTimer);
+
+  },15000);
+
+}
+
+function createGameHeart() {
+
+  const area = document.getElementById("gameArea");
+
+  const heart = document.createElement("div");
+
+  heart.className = "game-heart";
+
+  heart.textContent = "❤️";
+
+  const x =
+    Math.random() * (area.clientWidth - 45);
+
+  const y =
+    Math.random() * (area.clientHeight - 45);
+
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
+
+  heart.onclick = () => {
+
+    score++;
+
+    document.getElementById("score")
+      .textContent = score;
+
+    heart.remove();
+
+    createHearts(2);
+
+  };
+
+  area.appendChild(heart);
+
+  setTimeout(() => {
+
+    if(heart.parentNode) {
+      heart.remove();
+    }
+
+  },1200);
+
+}
+
+
+/* -----------------------------
+   MYSTERY BOXES
+------------------------------ */
+
+const boxMessages = [
+
+  "You deserve all the happiness in the world. 🌸",
+
+  "Plot twist: You're the best prize here. 🏆❤️",
+
+  "This box contains one virtual hug. 🤗",
+
+  "Okay... now smile. That's an order. 😭❤️"
+
+];
+
+function openBox(index) {
+
+  document.getElementById("boxMessage")
+    .textContent = boxMessages[index];
+
+  createHearts(8);
+
+}
+
+
+/* -----------------------------
+   FLOATING HEARTS
+------------------------------ */
+
+function createHearts(amount) {
+
+  for(let i = 0; i < amount; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+      ["❤️","💗","💕","💖","💘"]
+      [Math.floor(Math.random()*5)];
+
+    heart.style.left =
+      Math.random()*100 + "vw";
+
+    heart.style.bottom = "-30px";
+
+    heart.style.fontSize =
+      (15 + Math.random()*25) + "px";
+
+    heart.style.animationDuration =
+      (3 + Math.random()*3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    },6000);
+
+  }
+
+}
+
+
+/* -----------------------------
+   FINAL SURPRISE
+------------------------------ */
+
+function celebrate() {
+
+  createHearts(50);
+
+  document.getElementById("surprise")
+    .textContent =
+    "SURPRISE! 🎉 You just unlocked unlimited virtual hugs. 🤗❤️";
+
+}
+
+
+/* Random hearts in background */
+
+setInterval(() => {
+
+  if(Math.random() > .55) {
+    createHearts(1);
+  }
+
+},1500);
+
+</script>
+
+</body>
+  </html>
